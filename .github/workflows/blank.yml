@@ -36,11 +36,15 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-      # lsコマンドを実行する。
+      # lsコマンドを複数実行する。
       - name: Run a ls command
         run: |
           ls
           ls -la
           ls -la > result.txt
-          ls -la
-          
+      
+      # リダイレクトしたファイルの中身を見る
+      - name: View a textfile
+        run: |
+          echo リダイレクトしたファイルの中身は以下です。
+          cat result.txt          
