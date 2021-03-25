@@ -38,5 +38,9 @@ jobs:
 
       # lsコマンドを実行する。
       - name: Run a ls command
-        run: ls
-        
+        run: |
+          ls
+          ls -la
+          ls -la > result.txt
+          ls -la
+          
