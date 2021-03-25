@@ -5,10 +5,10 @@ name: CI
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,6 +20,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    # タイムアウトは3分とする（job全体）
+    timeout-minutes: 3
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -35,3 +38,16 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      # lsコマンドを複数実行する。
+      - name: Run a ls command
+        run: |
+          ls
+          ls -la
+          ls -la > result.txt
+      
+      # リダイレクトしたファイルの中身を見る
+      - name: View a textfile
+        run: |
+          echo リダイレクトしたファイルの中身は以下です。
+          cat result.txt          
